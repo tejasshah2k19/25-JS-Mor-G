@@ -1,0 +1,69 @@
+Web development 
+
+    HTML : web pages 
+    CSS  : design 
+    JS   : scripting 
+
+
+
+    java script -> its not a PL 
+                -> is not a JAVA 
+
+
+
+    PL -> C -> ENG -> SYS -> LL -> Compiler 
+    script -> JS -> ENG -> browser -> JS Engine 
+
+
+JS Engine -> 
+
+    IE 
+    OPERA 
+    FF 
+    CHROME 
+
+
+Spider Monkey -- Mozilla 
+Chakra  --- Microsoft
+V8      --- Google 
+
+
+NODE JS 
+
+
+
+HTML --> JS ---> Two Type --> 
+
+JS -->
+    internal JS 
+    external JS 
+
+
+
+internal :    JS --> code --> inside HTML file -> 
+external :    JS --> code --> outside HTML file -> new file { different file }
+
+
+------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
