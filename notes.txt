@@ -46,10 +46,23 @@ external :    JS --> code --> outside HTML file -> new file { different file }
 
 ------------------------------------------------------------------------------------------------------
 
+Task 1: 
+            read name , age and gender from user 
+            if gender is male and age is greater than 17 then eligible for voting 
+            if gender is female and age is greater than 21 then eligible for voting 
+            otherwise not eligible for voting
 
 
+Task 2 :
+            read marks of three subjects , sci maths and eng 
+            if percentage is 85+ then print PASS 
+            if maths + eng is 180+ then print PASS 
+            if maths + sci is 190+ then Print PAss 
+            otherwise
+             print Try Again  
 
 
+------------------------------------------------------------------------------------------------------
 
 
 
