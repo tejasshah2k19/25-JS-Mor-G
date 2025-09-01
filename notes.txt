@@ -52,6 +52,20 @@ Task 1:
             if gender is female and age is greater than 21 then eligible for voting 
             otherwise not eligible for voting
 
+            name = promp("Enter name");
+            age =  parseInt(prompt("Enter age"));
+            gender = prompt("Enter Gender"); 
+
+            if (gender == "male" && age > 17){
+                document.write("eligible for voting");
+            }else if(gender == "female" && age > 21) {
+              document.write("eligible for voting");
+                
+            }else{
+                  document.write("not eligible for voting");
+
+            }
+
 
 Task 2 :
             read marks of three subjects , sci maths and eng 
@@ -63,8 +77,21 @@ Task 2 :
 
 
 ------------------------------------------------------------------------------------------------------
+Task : 
+        take two numbers from user 
+        read choice from users , like  + addition - sub * mul / div 
+
+        prompt 
+        parseInt
+        if..else
 
 
+------------------------------------------------------------------------------------------------------
+document
+    calc
+        n1
+document.calc.n1 
+document.calc.n1.value 
 
 
 
