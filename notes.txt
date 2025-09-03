@@ -102,6 +102,25 @@ Calc ->
             [submit]        
 
 ------------------------------------------------------------------------------------------------------
+Form -> 
+    Num1 :
+    Num2 :
+    Num3 : 
+        [ submit ]
+
+    Greatest from three 
+
+------------------------------------------------------------------------------------------------------
+Form -> 
+    read marks of three subjects 
+    submit -> percentage -> 
+    percentage 35<  :  FAIL : RED 
+    percentage 35-50 : B : Yellow
+    percentage 51-70 : A : Orange 
+    percentage 71-90 : A- : Blue 
+    percentage 91 : A+ : Green 
+
+------------------------------------------------------------------------------------------------------
 
 
 
