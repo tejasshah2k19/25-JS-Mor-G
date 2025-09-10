@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //js 
+        function calcLen(){
+            //read =input 
+            let fn = document.getElementById("firstName").value; 
+       
+            //logic =process 
+            let x = fn.length; 
+
+            //output =output 
+            document.getElementById("result").innerText = x; 
+
+        }
+    </script>
+
+</head>
+
+<body>
+
+    Name : <input type="text" id="firstName" />
+    <br><br>
+    <input type="button" value="Submit" onclick="calcLen()" />
+    <br><br>
+    <div id="result"></div>
+</body>
+
+</html>

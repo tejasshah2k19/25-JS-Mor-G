@@ -17,20 +17,23 @@
 
             if (choice == "Addition") {
                 ans = n1 + n2;
-                document.write(ans);
+                // document.write(ans);
             }
-            else if(choice == "Subtraction"){
-                ans = n1 - n2; 
-                document.write(ans);
-            }else if(choice == "Multiplication"){
-                ans = n1*n2; 
-                document.write(ans);
-            }else if(choice == "Division"){
+            else if (choice == "Subtraction") {
+                ans = n1 - n2;
+                // document.write(ans);
+            } else if (choice == "Multiplication") {
+                ans = n1 * n2;
+                // document.write(ans);
+            } else if (choice == "Division") {
                 ans = n1 / n2;
-                document.write(ans);
-            }else{
-                document.write("Invalid Choice");
+                // document.write(ans);
+            } else {
+                // document.write("Invalid Choice");
+                ans = "Invalid Choice";
             }
+
+            document.getElementById("result").innerText = ans;
         }
     </script>
 </head>
@@ -52,6 +55,9 @@
         <input type="button" value="Submit" onclick="calculator()" />
 
     </form>
+
+    <br><Br>
+    <div id="result"></div>
 
 </body>
 

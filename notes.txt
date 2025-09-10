@@ -123,6 +123,117 @@ Form ->
 ------------------------------------------------------------------------------------------------------
 
 
+int a;
+int  a=10; 
+a =100; 
+
+C:
+const int x=10;//fix -> constant variable 
+x = 100; //error 
+
+
+var 
+let 
+const 
+
+js: 
+    const => constant variable => value fix => you can not change 
+
+    const SIZE = 5; 
+    SIZE = 10; => error 
+
+
+var a;
+a =10;
+var x = 10; 
+x = 100;
+var x = 10; 
+
+
+
+
+let x;
+x=10; 
+let y=10;
+y = 1000;
+let y =100;
+
+
+-------------------------------------------------------
+
+
+<body bgColor="yellow" >
+
+
+</body>
+
+
+<body  onLoad="yellow">
+
+
+</body>
+
+
+-------------------------------------------------------
+
+    C: 
+        Single linie =>  // 
+        multi line =>  /* */ 
+    
+    HTML : 
+            <!--            -->
+
+    JS : 
+        Single :  // 
+        multi  :  /*   */ 
+    
+
+-------------------------------------------------------
+bYear -> Age -> 18>= -> BgColor -> green -> eligible for voting 
+                -18  -> bgColor -> red -> Not eligible for voting 
+-------------------------------------------------------
+
+FirstName : [ Royal ]
+    [submit]
+
+
+5 
+
+OM 
+
+2 
+
+--------------------------------------
+
+document.getElementById() 
+
+
+--------------------------------------
+
+
+Signup Form 
+    FirstName : text 
+    latName :  text 
+    email : 
+    password :
+    gender : radio 
+    address : textarea 
+    city : drop down 
+    hobby : checkbox 
+
+    [submit]
+
+    First Name : XXX 
+    Last Name : XXX 
+    Gender  : XXX 
+
+
+--------------------------------------
+
+
+
+
+
 
 
 

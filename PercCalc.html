@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calPercentage() {
+            maths = parseInt(document.myForm.maths.value);
+            sci = parseInt(document.myForm.sci.value);
+            eng = parseInt(document.myForm.eng.value);
+
+            perc = (maths + sci + eng) / 3;
+
+            if (perc < 35) {
+                document.write("<font color='red'>FAIL</font>");
+            }
+            else if (perc < 50) {
+                document.write("<font color='yellow'>B</font>");
+            }
+            else if (perc < 70) {
+                document.write("<font color='orange'>A</font>");
+            }
+            else if (perc <= 85) {
+                document.write("<font color='blue'>A-</font>");
+            }
+            else {
+                document.write("<font color='green'>A+</font>");
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <form name="myForm">
+        Maths : <input type="text" name="maths" /><br><br>
+        Sci :<input type="text" name="sci" /><br><br>
+        Eng : <input type="text" name="eng" /><br><br>
+
+        <input type="button" value="Calculate" onclick="calPercentage()" />
+
+    </form>
+
+</body>
+
+</html>
