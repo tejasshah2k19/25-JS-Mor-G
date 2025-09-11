@@ -232,14 +232,25 @@ Signup Form
 
 
 
+repeat -> task -> 
+
+    loop ->
+
+        type? 
+            2: entry control , exit control 
+            3: for , while , do....while 
 
 
+    print your name 10 times using loop? 
 
 
+    for(i=1;i<=10;i++){
+        document.write("Royal<br>");
+    }
 
+------------------------------------------------------------------------------------------
 
-
-
+multiplication table -> 10 
 
 
 
