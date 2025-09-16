@@ -266,3 +266,33 @@ print all the numbers between start and end who can divide by 5
 ------------------------------------------------------------------------------------------
 
 
+html -> <script> 
+
+js -> case > yes 
+
+prompt() -> data type -> string -> parseInt() -> parseFloat() 
+
+document.formName.textBoxName[elementName].value 
+document.getElementById("myId").value 
+
+id -> single time -> unique 
+name -> multiple time 
+
+comments --> 2 -> single , multiline 
+
+function myFun(){} 
+
+
+onClick 
+onLoad 
+
+------------------------------------------------------------------------------------------
+
+
+form -> input ->
+                        id : single 
+                        name 
+
+
+                        <input id=""> 
+                        <input name=""> 
