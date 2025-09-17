@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function funOnClick() {
+            //Date class 
+
+            let d = new Date();
+            // alert(d);
+            let hour = d.getHours();
+            let min = d.getMinutes();
+
+            if (hour >= 6 && hour <= 12) {
+                alert("Good Morning " + hour + ":" + min);
+            } else if (hour > 12 && hour <= 17) {
+                alert("Good NooN " + hour + ":" + min);
+            } else {
+                alert("Good Evening " + hour + ":" + min);
+            }
+        }
+
+        function changeBlb() {
+
+            if (document.getElementById("blb").src.match("pic_bulboff.gif")) {
+                document.getElementById("blb").src = "pic_bulbon.gif";
+            } else {
+                document.getElementById("blb").src = "pic_bulboff.gif";
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <input type="button" value="onClick" onclick="funOnClick()" /><br><Br>
+    <input type="button" value="onDblClick" ondblclick="funOnClick()" />
+    <br><br>
+
+    <img src="pic_bulboff.gif" id="blb" onclick="changeBlb()" />
+
+
+</body>
+
+</html>
