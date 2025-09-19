@@ -300,4 +300,35 @@ form -> input ->
 events ->
             onClick 
             onDblClick 
-            
+------------------------------------------------------------------------------------------
+
+onmouseover 
+onmouseout 
+
+
+1)          [ Chnage BgColor ]              
+
+
+Math.random() => 0.258521111 
+
+
+Math.random()  * 1000 => 258.521111
+
+parseInt(Math.random()*1000) => 258 
+
+
+document.body.style.backgroundColor = "#"+parseInt(Math.random()*1000);
+
+------------------------------------------------------------------------------------------
+
+FORM VALIDATION
+
+
+First Name : [         ]
+
+    [submit]
+
+
+on submit -> check -> first name is blank then print message please enter firstname 
+                   -> if firstname is present then print firstname in big size on same page 
+                       

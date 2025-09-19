@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        function register(){
+            let fn = document.getElementById("firstName").value; 
+
+            if( fn == "") {
+                document.getElementById("firstNameMsg").innerHTML = "Please Enter firstName";
+            }else{
+                document.getElementById("firstNameMsg").innerHTML = "";
+                document.getElementById("firstNamePrint").innerHTML = "<font size=6>"+fn+"</font>";
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+
+    FirstName: <input type="text" id="firstName"/><span id="firstNameMsg"></span> <br><br> 
+
+    <input type="button" value="Submit" onclick="register()"/>
+
+    <br><br>
+
+    <div id="firstNamePrint"></div>
+    
+</body>
+</html>
