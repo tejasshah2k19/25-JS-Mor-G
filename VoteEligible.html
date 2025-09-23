@@ -8,19 +8,26 @@
     <script>
         function voteEligiblityCheck() {
             //input
-            let fn = document.getElementById("firstName").value ;
-            let age = document.getElementById("age").value; 
-            let gender = document.getElementsByName("gender"); //gender[] 
+            let fn = document.getElementById("firstName").value;
+            let age = document.getElementById("age").value;
+            let gender = document.getElementsByName("gender"); //gender[] -> gender[0]  gender[1] 
 
 
             //process -- logic 
-            if(fn == ""){
+            //validation 
+            if (fn == "") {
                 document.getElementById("firstNameMsg").innerHTML = "Please Enter FirstName";
             }
 
-            if(age == ""){
+            if (age == "") {
                 document.getElementById("ageMsg").innerHTML = "Please Enter Age";
             }
+
+            if (!gender[0].checked && !gender[1].checked) {
+                document.getElementById("genderMsg").innerHTML = "Please Select Gender ";
+            }
+            //check - logic 
+
             //output 
         }
     </script>
@@ -33,13 +40,15 @@
     Age : <input type="number" id="age" /> <span id="ageMsg" style="color: red;"></span> <Br><br>
 
     Gender : Male <input type="radio" name="gender" value="male" />
-    Female <input type="radio" name="gender" value="female" />
+    Female <input type="radio" name="gender" value="female" /> <span id="genderMsg" style="color: red;"></span>
     <br><Br>
 
 
     <input type="button" value="Submit" onclick="voteEligiblityCheck()" />
 
-
+       <br><Br>
+        
+        
 </body>
 
 </html>
