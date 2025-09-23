@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function voteEligiblityCheck() {
+            //input
+            let fn = document.getElementById("firstName").value ;
+            let age = document.getElementById("age").value; 
+            let gender = document.getElementsByName("gender"); //gender[] 
+
+
+            //process -- logic 
+            if(fn == ""){
+                document.getElementById("firstNameMsg").innerHTML = "Please Enter FirstName";
+            }
+
+            if(age == ""){
+                document.getElementById("ageMsg").innerHTML = "Please Enter Age";
+            }
+            //output 
+        }
+    </script>
+</head>
+
+<body>
+
+    FirstName : <input type="text" id="firstName" /> <span style="color: red;" id="firstNameMsg"></span> <br><br>
+
+    Age : <input type="number" id="age" /> <span id="ageMsg" style="color: red;"></span> <Br><br>
+
+    Gender : Male <input type="radio" name="gender" value="male" />
+    Female <input type="radio" name="gender" value="female" />
+    <br><Br>
+
+
+    <input type="button" value="Submit" onclick="voteEligiblityCheck()" />
+
+
+</body>
+
+</html>

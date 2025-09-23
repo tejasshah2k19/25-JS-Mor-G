@@ -332,3 +332,48 @@ First Name : [         ]
 on submit -> check -> first name is blank then print message please enter firstname 
                    -> if firstname is present then print firstname in big size on same page 
                        
+
+------------------------------------------------------------------------------------------
+
+
+FirstName :   [              ]  Please Enter FirstName 
+
+Age       : 
+
+
+Gender    :   Male Female 
+
+
+    [ submit ] 
+
+
+Eligible for Voting 
+Not Eligible For Voting 
+
+
+1) Gender => male and age 18+ => eligible
+2) gender => female and age 19+ => eligible 
+
+validation : 
+        first name => please enter firstname => color red 
+
+
+------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
