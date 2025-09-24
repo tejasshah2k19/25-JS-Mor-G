@@ -12,23 +12,45 @@
             let age = document.getElementById("age").value;
             let gender = document.getElementsByName("gender"); //gender[] -> gender[0]  gender[1] 
 
+            let isError = false;
 
             //process -- logic 
             //validation 
             if (fn == "") {
+                isError = true;
                 document.getElementById("firstNameMsg").innerHTML = "Please Enter FirstName";
+            } else {
+                document.getElementById("firstNameMsg").innerHTML = "";
             }
 
             if (age == "") {
+                
+                isError = true;
                 document.getElementById("ageMsg").innerHTML = "Please Enter Age";
+            } else {
+                document.getElementById("ageMsg").innerHTML = "";
+
             }
 
             if (!gender[0].checked && !gender[1].checked) {
+            
+                isError = true;
                 document.getElementById("genderMsg").innerHTML = "Please Select Gender ";
+            } else {
+                document.getElementById("genderMsg").innerHTML = "";
             }
             //check - logic 
 
             //output 
+            if (isError == false) {
+                if (age >= 18 && gender[0].checked) {
+                    document.getElementById("result").innerHTML = "<h2>Eligible For Voting</h2>";
+                } else if (age >= 19 && gender[1].checked) {
+                    document.getElementById("result").innerHTML = "<h2>Eligible For Voting</h2>";
+                } else {
+                    document.getElementById("result").innerHTML = "<h2>Not Eligible For Voting</h2>";
+                }
+            }
         }
     </script>
 </head>
@@ -46,9 +68,9 @@
 
     <input type="button" value="Submit" onclick="voteEligiblityCheck()" />
 
-       <br><Br>
-        
-        
+    <br><Br>
+    <div id="result"></div>
+
 </body>
 
 </html>
