@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        let a = [10, 2, 41, 50, 6];
+
+        let sum = 0;
+        let max = a[0];//10 
+
+        for (let i = 0; i < a.length; i++) {
+            sum = sum + a[i];
+            if (a[i] > max) {
+                max = a[i];
+            }
+        }
+
+        console.log("sum -> " + sum);
+        console.log("max -> "+max);
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

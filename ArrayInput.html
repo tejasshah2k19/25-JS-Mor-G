@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        var arr = [];
+        function fnArray() {
+
+            let num = parseInt(document.getElementById("num").value);
+            arr.push(num);
+            console.log(arr);
+            document.getElementById("num").value = "";
+        }
+
+        function fnPrintArray() {
+            document.getElementById("printArr").innerHTML = arr;
+        }
+
+        function fnSortArray() {
+            // arr.sort(function (x, y) {
+            //     if (x > y) {
+            //         return 1;
+            //     } else if (x < y) {
+            //         return -1;
+            //     } else {
+            //         return 0;
+            //     }
+            // });
+
+            arr.sort(function(x, y) {
+                return x-y;  
+            });
+            fnPrintArray();
+
+            //23 34 56 66 33
+        }
+
+        function fnReverseArray(){
+            arr.reverse();
+            fnPrintArray();
+        }
+    </script>
+</head>
+
+<body>
+    Num : <input type="text" id="num" /><br><br>
+    <input type="button" value="Submit" onclick="fnArray()" />
+    <input type="button" value="Print" onclick="fnPrintArray()" />
+
+    <input type="button" value="Sort" onclick="fnSortArray()" />
+<input type="button" value="Reverse" onclick="fnReverseArray()" />
+
+
+    <br><br>
+
+    <div id="printArr"></div>
+
+</body>
+
+</html>

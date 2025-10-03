@@ -360,6 +360,122 @@ validation :
 
 ------------------------------------------------------------------------------------------
 
+let var const 
+
+let a = 10;
+var a = 10;
+const a = 10;
+
+
+
+if i want to store 10 values / numbers  then how many variable i have to take ? 
+
+
+addition of two numbers -> n1 n2 ans 
+addition of 10 numbers -> array 
+addition of 100 numbers -> array 
+
+
+
+array -> collection of data / items 
+
+int a[10]; //c 
+
+js 
+let a = [] 
+
+let a = [11,22,33,44,55]; 
+
+document.write(a);
+
+
+if you want to access individual element / item from an array you can use index.
+index starts with 0 and ends with size-1 
+
+
+console.log(a[0]); 
+console.log(a[4]);
+
+if you want to know , how many items we have in an array 
+length : keyword 
+
+1) print sum of all elements in an array 
+2) print max num from above array 
+
+
+---------------------------------------------------------------------------------------
+
+let x = [] 
+x.push(10)
+x.push(20)
+
+
+
+
+size 10 -> a[9]
+
+a[9] -> size 10 
+
+
+a[100] -> 101 
+
+-------------------------------------------------------------------------------
+
+how to create empty array in js ? 
+let a = [] 
+
+
+________________ function is used to add element in array ? 
+push() 
+a.push(10)
+
+_____________________ keyword is used to find totla elements in an array? 
+length
+a.length 
+
+
+how to access last element is js ? we dont know size of an array 
+a[a.length - 1]
+
+
+-------------------------------------------------------------------------------
+
+let a= [10,20,30,40,50]; 
+
+to remove an element from array 
+pop()    // remove last element from array 
+
+
+a.pop()
+print a  //10 20 30 40 
+
+
+search an element in array 
+let a= [10,20,30,40,50]; 
+
+a.indexOf(50) => 4  { it will return index of if element present }
+a.indexOf(500) => -1 { it will return -1 if element not present }
+
+
+let b= [10,50,20,30,40,50]; 
+
+b.indexOf(50); // 1 
+b.lastIndexOf(50); // 5 
+
+
+
+let b= [10,50,20,50,30,40,50]; 
+
+
+b.indexOf(50); // 1 
+b.lastIndexOf(50); // 6 
+
+
+let a = [10,20,30,40,50,60,70,80]; 
+
+slice(start,end);  //start : inclusive , end : exclusive 
+
+a.slice(2,5) ; // 2 3 4  
 
 
 
@@ -377,3 +493,21 @@ validation :
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------
+[Add] -> array insert element 
+[print] -> array print browser 
+[sum] -> sum of all items 
+[max] -> max from array
