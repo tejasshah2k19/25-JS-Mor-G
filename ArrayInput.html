@@ -30,11 +30,12 @@
             //         return 0;
             //     }
             // });
+            const dummyArr  = arr; 
 
-            arr.sort(function(x, y) {
+            dummyArr.sort(function(x, y) {
                 return x-y;  
             });
-            fnPrintArray();
+            document.getElementById("printArr").innerHTML  = dummyArr; 
 
             //23 34 56 66 33
         }
@@ -52,7 +53,9 @@
     <input type="button" value="Print" onclick="fnPrintArray()" />
 
     <input type="button" value="Sort" onclick="fnSortArray()" />
-<input type="button" value="Reverse" onclick="fnReverseArray()" />
+
+    <input type="button" value="Sort Dummy" onclick="fnSortArrayDummy()" />
+    <input type="button" value="Reverse" onclick="fnReverseArray()" />
 
 
     <br><br>

@@ -477,33 +477,15 @@ slice(start,end);  //start : inclusive , end : exclusive
 
 a.slice(2,5) ; // 2 3 4  
 
+---------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+sort()
+sort(fn)
+reverse()
+---------------------------------------
+toSorted()
+toReversed()
+---------------------------------------
 
 
 -------------------------------------------------------------------------
@@ -511,3 +493,16 @@ a.slice(2,5) ; // 2 3 4
 [print] -> array print browser 
 [sum] -> sum of all items 
 [max] -> max from array
+-------------------------------------------------------------------------
+
+js : 
+    internal  { HTML }
+    external  { HTML , .js }
+
+how to create external js? 
+create file with .js extension 
+
+how to use external js ?
+using script tag and src attribute 
+
+we will never run .js file directly 
