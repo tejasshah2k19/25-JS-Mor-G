@@ -506,3 +506,8 @@ how to use external js ?
 using script tag and src attribute 
 
 we will never run .js file directly 
+
+
+
+x = "Royal" 
+
