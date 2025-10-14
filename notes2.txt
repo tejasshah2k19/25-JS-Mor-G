@@ -1,0 +1,59 @@
+Web Development -> 
+
+
+Web site --> collections of web pages -> 
+
+
+web page -> 
+HTML  : web page , static 
+CSS   : design 
+JS    : interactive , dynamic 
+
+
+----------------------------------------------
+
+javascript -> standalong -> run -> X 
+
+
+types : 
+        1)  internal JS  [ HTML : no separate java script file ] 
+        2)  external JS  [ HTML , JS : separate js file ]
+
+
+----------------------------------------------
+
+internal JS => 
+
+1) how ?     <script>   </script>  
+2) where ?   any where in the page ,    inside the head section , bottom of the body 
+
+----------------------------------------------
+
+how to print data using java script ? 
+1) document.write("")    print on browser 
+2) console.log("")       print on console 
+
+
+----------------------------------------------
+
+let - var
+
+const -> 
+
+----------------------------------------------
+
+conditional statements :
+
+if
+if...else 
+netsted 
+if lader 
+
+
+1) num -> odd even 
+2) find out the max from two numbers 
+
+3) num -> divisible by 3 or 10 
+4) find out max from three numbers 
+
+----------------------------------------------
