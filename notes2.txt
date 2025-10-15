@@ -54,6 +54,143 @@ if lader
 2) find out the max from two numbers 
 
 3) num -> divisible by 3 or 10 
+        let num=25; 
+        if( num % 3 == 0 || num % 10 == 0 ){
+                console.log("num divide by 3 or 10");
+        }else{
+                console.log("num can not divide by 3 or 10 ");
+        }
+
+        if( num % 3 == 0)
+                console.log("num can divide by 3");
+        else if( num % 10 == 0)
+                console.log("num can divide by 10);
+        else 
+                console.log("num can not divide by 3 or 10");
+
+
+
 4) find out max from three numbers 
 
 ----------------------------------------------
+
+print 10 times 
+
+loop : 
+        for 
+        while 
+        do...while 
+
+
+print 1 to 10 numbers 
+
+for(i=1; i<= 10 ;i++){
+        console.log(i); 
+}
+
+
+1) start = 10  
+   end   = 30 
+   print all the numbers between start and end 
+
+        let start = 10;
+        let end  = 30; 
+
+        for(i=start ; i<= end ; i++){
+                console.log(i);
+        }
+
+2) start = 10  
+   end   = 30 
+   print all the numbers between start and end which can divide by 3 or 10 
+
+        let start = 10;
+        let end  = 30; 
+
+        for(i=start ; i<= end ; i++){
+                if( i % 3 == 0 || i % 10 == 0 )
+                        console.log(i);
+        }
+
+
+3) num = 5
+   print multiplication table for num 
+   5 * 1 = 5
+   5 * 2 = 10 
+   ......
+   5 * 10 = 50
+
+let num = 5; 
+ for(i=1; i<= 10 ; i++){
+        console.log(num+" * "+i+" = "+(num*i) )
+ }
+
+
+H.W 
+4) let num = 456  --> 15 
+   let num = 32   --> 5 
+   let num = 72   --> 9 
+
+---------------------------------------------------------------------------
+
+array : collection of n numbers of items 
+
+let a = []; // [] 
+
+let arr = [11,22,33,44,55]; 
+
+no size limit 
+type restrictions 
+
+let mix = [1,2,"ram",true,"shyam",10,52.25]; 
+
+
+let arr = [11,22,33,44,55]; 
+
+//how to add element / item / data in existing array 
+push() 
+
+arr.push(60);//you can add element - but at the end of an array 
+console.log(arr); //11 22 33 44 55 60 
+
+
+//how to remove item from array
+pop()
+
+arr.pop(); // will remove last element from array 
+console.log(arr); //11 22 33 44 55  
+
+
+//how to access individual item / data / element from array 
+index , starts with 0 
+
+first element 
+console.log( arr[0] );
+
+//how many elements in array 
+length 
+console.log(arr.length); 
+
+  
+for(i=0  ; i<arr.length  ; i++)
+        console.log(arr[i]) 
+
+ 
+
+
+1) find out sum of all elements in array 
+2) find out min and max num from array 
+
+----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+  
