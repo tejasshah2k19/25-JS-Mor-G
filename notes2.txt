@@ -184,13 +184,79 @@ for(i=0  ; i<arr.length  ; i++)
 ----------------------------------------------------------------------------
 
 
+let arr = [11,22,33,44,55]; 
+
+
+for(i=0 ; i<arr.length ;i++){
+        console.log(arr[i]);
+}
 
 
 
+forEach() -> 
+        array individual item , read , process 
+        array modification 
+
+
+        arr.forEach( tmp => {
+                console.log(tmp);         
+        } ); 
 
 
 
+0) print all elements using forEach 
+        arr.forEach( tmp => {
+                console.log(tmp);         
+        } ); 
+
+1) print sum of all elements from array : forEach  
+        let sum =0; 
+        arr.forEach( tmp => {
+               sum = sum + tmp; 
+        });
+
+        console.log("Sum => "+sum);
 
 
+2) count total odd and even from array  : forEach 
+        let oddCounter = 0;
+        let evenCounter = 0; 
 
-  
+        arr.forEach( tmp => {
+                if( tmp % 2 == 0 ){
+                        evenCounter++;
+                }else{
+                        oddCounter++;
+                }
+        });
+
+        console.log(" Total Even => "+evenCounter );
+        console.log(" Total Odd  => +oddCounter); 
+
+
+3)  find out min and max from array : forEach 
+
+----------------------------------------------------------------------------------------------
+
+filter -> 
+        1) filter array -> generate new array 
+        2) original array unchanged 
+
+
+        let arr = [11,22,33,44,55]; 
+
+        1) filter main array , produce oddarry and even array 
+
+                let evenArray =   arr.filter( tmp => tmp%2==0 );
+                let oddArray  = arr.filter( tmp => tmp % 2 != 0 ); 
+
+        2)
+                let arr = [11,22,33,44,55]; 
+                create new array having all the numbers which can divide by 5 
+
+        3)      let percentage = [56,85,74,96,35,84,68,52,94]
+                create array having all the percentage which is greater than 70 
+
+                let percentage70 = percentage.filter( tmp => tmp > 70 ); 
+                console.log("percentage70 => "+percentage70) ;
+----------------------------------------------------------------------------------------------

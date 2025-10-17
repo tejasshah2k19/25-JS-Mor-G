@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+
+        let arr = [11, 22, 33, 44, 55];
+        for (i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+
+        console.log("Print all elements : ");
+        arr.forEach(tmp => {
+            console.log(tmp);
+        });
+
+        let sum = 0;
+        arr.forEach(tmp => {
+            sum = sum + tmp;
+        });
+
+        let oddCounter = 0;
+        let evenCounter = 0; 
+        console.log("Sum => " + sum);
+
+        arr.forEach(tmp => {
+            if (tmp % 2 == 0) {
+                evenCounter++;
+            } else {
+                oddCounter++;
+            }
+        });
+
+
+        console.log(" Total Even => "+evenCounter );
+        console.log(" Total Odd  => "+oddCounter); 
+
+
+    // filter main array , produce oddarry and even array 
+
+      let evenArray =   arr.filter( tmp => tmp%2==0 );
+
+      let oddArray  = arr.filter( tmp => tmp % 2 != 0 ); 
+      
+
+      console.log("odd array => "+oddArray);
+      console.log("even array => "+evenArray);
+      
+      
+    </script>
+</body>
+
+</html>
