@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        function fnBlbOff(){
+            document.getElementById("blb").src = "pic_bulboff.gif";
+        }
+
+        function fnBlbOn(){
+            document.getElementById("blb").src = "pic_bulbon.gif";
+        }
+    </script>
+</head>
+<body>
+    <img src="pic_bulbon.gif" id="blb"/> 
+    <br><br> 
+
+    <input type="button" value="ON" onclick="fnBlbOn()"/> 
+    <input type="button" value="OFF" onclick="fnBlbOff()"/>
+</body>
+</html>

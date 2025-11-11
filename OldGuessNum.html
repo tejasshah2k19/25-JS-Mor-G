@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let winningNum = parseInt(Math.random() * 100);
+        let lifeLine = 5; 
+
+        function fnGame() {
+            //read 
+            let myNum = document.getElementById("num").value;//string data type 
+
+
+            if (myNum == undefined || myNum == "") {
+                alert("Please Enter number");
+            } else {
+
+                myNum = parseInt(myNum);
+
+                if (myNum == winningNum) {
+                    alert("Winner Winner Chicken Dinner");
+                } else {
+                    alert("You loose the Game !!!");
+                    lifeLine--; 
+
+                    if(lifeLine == 0){
+                        location.href ="GameOver.html"
+                    }
+                    if (myNum > winningNum) {
+                        alert("your num is greater than winning number\nLife Line : "+lifeLine);
+                    } else {
+                        alert("your num is less than winning number\nLife Line : "+lifeLine);
+
+                    }
+                }
+
+            }
+
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+    Enter Number: <input type="number" id="num" /><br><br>
+    <input type="button" value="Check" onclick="fnGame()" />
+</body>
+
+</html>

@@ -260,3 +260,12 @@ filter ->
                 let percentage70 = percentage.filter( tmp => tmp > 70 ); 
                 console.log("percentage70 => "+percentage70) ;
 ----------------------------------------------------------------------------------------------
+
+Event -> 
+
+        action -> 
+
+button -> 
+                click 
+                double click 
+                

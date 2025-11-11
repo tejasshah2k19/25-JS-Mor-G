@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Win</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at top, #001a00, #000);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #00ff88;
+            text-shadow: 0 0 15px #00ff88, 0 0 30px #00cc66;
+            margin-bottom: 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        p {
+            font-size: 1.3rem;
+            color: #b3ffcc;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: #00ff88;
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+            box-shadow: 0 0 20px #00ff88;
+        }
+
+        .btn:hover {
+            background-color: #00cc66;
+            box-shadow: 0 0 30px #00cc66;
+        }
+
+        @keyframes pulse {
+            0% { text-shadow: 0 0 10px #00ff88; }
+            50% { text-shadow: 0 0 25px #00ff88; }
+            100% { text-shadow: 0 0 10px #00ff88; }
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #00ff88;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+            to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🏆 You Win!</h1>
+    <p>Congratulations! You guessed it right 🎯</p>
+    <button class="btn" onclick="window.location.href='GuessNum.html'">Play Again</button>
+
+    <script>
+        // Generate confetti
+        for (let i = 0; i < 40; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = (2 + Math.random() * 3) + 's';
+            confetti.style.backgroundColor = ['#00ff88', '#00ffaa', '#66ffcc'][Math.floor(Math.random() * 3)];
+            confetti.style.width = confetti.style.height = Math.random() * 8 + 4 + 'px';
+            document.body.appendChild(confetti);
+        }
+    </script>
+</body>
+</html>
