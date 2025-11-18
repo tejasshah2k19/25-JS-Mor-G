@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000000, #4a0000);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 4rem;
+            letter-spacing: 4px;
+            color: #ff2e2e;
+            text-shadow: 0 0 10px #ff2e2e, 0 0 20px #ff0000;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #ffb3b3;
+        }
+
+        .btn {
+            background-color: #ff2e2e;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px #ff2e2e;
+        }
+
+        .btn:hover {
+            background-color: #ff5555;
+            box-shadow: 0 0 20px #ff5555;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Animated falling particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 0, 0, 0.6);
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Particles -->
+    <script>
+        for (let i = 0; i < 25; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDuration = (2 + Math.random() * 3) + 's';
+            particle.style.width = particle.style.height = Math.random() * 8 + 'px';
+            document.body.appendChild(particle);
+        }
+
+
+
+
+    </script>
+
+    <div class="container">
+        <h1>Game Over</h1>
+        <p>Better luck next time!</p>
+        <div id="myScore"></div>
+        <button class="btn" onclick="window.location.href='DiamondGame.html'">Try Again</button>
+    </div>
+
+
+    <script>
+
+        let score = localStorage.getItem("score");
+        console.log(score);
+        document.getElementById("myScore").innerHTML = score;
+
+
+    </script>
+</body>
+
+</html>

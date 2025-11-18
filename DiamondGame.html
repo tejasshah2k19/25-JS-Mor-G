@@ -1,48 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        td{
+        td {
             height: 100px;
             width: 100px;
             background-color: blanchedalmond;
             text-align: center;
         }
-
     </style>
 
     <script>
-        function diamond(id){
-           document.getElementById(id).src = "diamond_3.png";
+
+        localStorage.clear();
+
+        let bomb1 = parseInt(Math.random() * 10 % 9) + 1;//02.58745215853 * 10 
+        let bomb2 = parseInt(Math.random() * 10 % 9) + 1;
+        let bomb3 = parseInt(Math.random() * 10 % 9) + 1;
+
+        let winningCount =0;
+
+        console.log(bomb1);
+        console.log(bomb2);
+        console.log(bomb3);
+
+
+        function diamond(id) {
+            if (id == bomb1 || id == bomb2 || id == bomb3) {
+                document.getElementById(id).src = "bomb.png";
+                
+                localStorage.setItem("score",winningCount);
+
+                setTimeout(function () {
+                    location.href = "DiamondGameOver.html"
+                }, 300);
+
+            } else {
+                document.getElementById(id).src = "diamond_3.png";
+                winningCount++; 
+                localStorage.setItem("score",winningCount);
+
+                if(winningCount == 3){
+                    location.href = "DiamondGameWin.html";
+                }
+            }
         }
     </script>
 </head>
+
 <body>
 
+    <h1 align="center">Diamond Game</h1>
     <br><br><br><Br>
-        <table align="center">
-            <tr>
-                <td onclick="diamond(1)" ><img   src="" id="1"></td>
-                <td onclick="diamond(2)"><img   src="" id="2"></td>
-                <td onclick="diamond(3)"><img   src="" id="3"></td>
-            </tr>
-            
-            <tr>
-                <td onclick="diamond(4)"><img   src="" id="4"></td>
-                <td onclick="diamond(5)"><img   src="" id="5"></td>
-                <td onclick="diamond(6)"><img   src="" id="6"></td>
-            </tr>
-            
-            <tr>
-                <td onclick="diamond(7)"><img   src="" id="7"></td>
-                <td onclick="diamond(8)"><img   src="" id="8"></td>
-                <td onclick="diamond(9)"><img   src="" id="9"></td>
-            </tr>
+    <table align="center">
+        <tr>
+            <td onclick="diamond(1)"><img src="" id="1"></td>
+            <td onclick="diamond(2)"><img src="" id="2"></td>
+            <td onclick="diamond(3)"><img src="" id="3"></td>
+        </tr>
 
-        </table>
-    
+        <tr>
+            <td onclick="diamond(4)"><img src="" id="4"></td>
+            <td onclick="diamond(5)"><img src="" id="5"></td>
+            <td onclick="diamond(6)"><img src="" id="6"></td>
+        </tr>
+
+        <tr>
+            <td onclick="diamond(7)"><img src="" id="7"></td>
+            <td onclick="diamond(8)"><img src="" id="8"></td>
+            <td onclick="diamond(9)"><img src="" id="9"></td>
+        </tr>
+
+    </table>
+
 </body>
+
 </html>

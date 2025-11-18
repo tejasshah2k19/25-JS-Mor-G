@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candy Match Game 🍬</title>
+<style>
+  body {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    margin-top: 20px;
+    text-shadow: 2px 2px #000;
+  }
+  #stats {
+    margin: 10px 0;
+    font-size: 20px;
+  }
+  #board {
+    width: 320px;
+    height: 320px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 3px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 3px;
+    border-radius: 10px;
+  }
+  .candy {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .red { background-color: #e74c3c; }
+  .yellow { background-color: #f1c40f; }
+  .green { background-color: #2ecc71; }
+  .blue { background-color: #3498db; }
+  .purple { background-color: #9b59b6; }
+  .orange { background-color: #e67e22; }
+
+  #gameOver {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    text-align: center;
+    padding-top: 200px;
+  }
+  #restartBtn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  #restartBtn:hover {
+    background: #2ecc71;
+  }
+</style>
+</head>
+<body>
+
+<h1>🍭 Candy Match Game</h1>
+<div id="stats">
+  <span id="score">Score: 0</span> | 
+  <span id="timer">Time: 60s</span>
+</div>
+
+<div id="board"></div>
+
+<div id="gameOver">
+  <h1>Game Over 😵</h1>
+  <h2>Your Final Score: <span id="finalScore"></span></h2>
+  <button id="restartBtn" onclick="restartGame()">Play Again</button>
+</div>
+
+<script>
+const board = document.getElementById("board");
+const scoreDisplay = document.getElementById("score");
+const timerDisplay = document.getElementById("timer");
+const finalScore = document.getElementById("finalScore");
+const gameOverScreen = document.getElementById("gameOver");
+
+const width = 8;
+const colors = ["red", "yellow", "green", "blue", "purple", "orange"];
+let squares = [];
+let score = 0;
+let timeLeft = 60;
+let gameActive = true;
+
+// Create the board
+function createBoard() {
+  for (let i = 0; i < width * width; i++) {
+    const square = document.createElement("div");
+    square.setAttribute("draggable", true);
+    square.setAttribute("id", i);
+    let randomColor = colors[Math.floor(Math.random() * colors.length)];
+    square.classList.add("candy", randomColor);
+    board.appendChild(square);
+    squares.push(square);
+  }
+}
+createBoard();
+
+// Drag functionality
+let colorBeingDragged;
+let colorBeingReplaced;
+let squareIdBeingDragged;
+let squareIdBeingReplaced;
+
+squares.forEach(square => square.addEventListener("dragstart", dragStart));
+squares.forEach(square => square.addEventListener("dragend", dragEnd));
+squares.forEach(square => square.addEventListener("dragover", dragOver));
+squares.forEach(square => square.addEventListener("dragenter", dragEnter));
+squares.forEach(square => square.addEventListener("dragleave", dragLeave));
+squares.forEach(square => square.addEventListener("drop", dragDrop));
+
+function dragStart() {
+  if (!gameActive) return;
+  colorBeingDragged = this.classList[1];
+  squareIdBeingDragged = parseInt(this.id);
+}
+function dragOver(e) { e.preventDefault(); }
+function dragEnter(e) { e.preventDefault(); }
+function dragLeave() {}
+function dragDrop() {
+  colorBeingReplaced = this.classList[1];
+  squareIdBeingReplaced = parseInt(this.id);
+  squares[squareIdBeingDragged].classList.replace(colorBeingDragged, colorBeingReplaced);
+  squares[squareIdBeingReplaced].classList.replace(colorBeingReplaced, colorBeingDragged);
+}
+function dragEnd() {
+  let validMoves = [
+    squareIdBeingDragged - 1,
+    squareIdBeingDragged - width,
+    squareIdBeingDragged + 1,
+    squareIdBeingDragged + width
+  ];
+  let validMove = validMoves.includes(squareIdBeingReplaced);
+  if (squareIdBeingReplaced && validMove) {
+    squareIdBeingReplaced = null;
+  } else if (squareIdBeingReplaced && !validMove) {
+    squares[squareIdBeingDragged].classList.replace(
+      squares[squareIdBeingDragged].classList[1],
+      colorBeingDragged
+    );
+    squares[squareIdBeingReplaced].classList.replace(
+      squares[squareIdBeingReplaced].classList[1],
+      colorBeingReplaced
+    );
+  } else {
+    squares[squareIdBeingDragged].classList.replace(
+      squares[squareIdBeingDragged].classList[1],
+      colorBeingDragged
+    );
+  }
+}
+
+// Game loop
+const gameInterval = setInterval(() => {
+  if (gameActive) {
+    checkRowForThree();
+    checkColumnForThree();
+    moveIntoSquareBelow();
+    scoreDisplay.textContent = "Score: " + score;
+  }
+}, 100);
+
+// Timer
+const timerInterval = setInterval(() => {
+  if (gameActive) {
+    timeLeft--;
+    timerDisplay.textContent = "Time: " + timeLeft + "s";
+    if (timeLeft <= 0) {
+      endGame();
+    }
+  }
+}, 1000);
+
+function endGame() {
+  gameActive = false;
+  clearInterval(timerInterval);
+  gameOverScreen.style.display = "block";
+  finalScore.textContent = score;
+}
+
+function restartGame() {
+  gameOverScreen.style.display = "none";
+  score = 0;
+  timeLeft = 60;
+  scoreDisplay.textContent = "Score: 0";
+  timerDisplay.textContent = "Time: 60s";
+  board.innerHTML = "";
+  squares = [];
+  createBoard();
+  gameActive = true;
+}
+
+function checkRowForThree() {
+  for (let i = 0; i < 61; i++) {
+    let rowOfThree = [i, i + 1, i + 2];
+    let decidedColor = squares[i].classList[1];
+    const isBlank = squares[i].classList.length < 2;
+    const notValid = [6,7,14,15,22,23,30,31,38,39,46,47,54,55];
+    if (notValid.includes(i)) continue;
+    if (rowOfThree.every(index => squares[index].classList.contains(decidedColor) && !isBlank)) {
+      score += 10;
+      rowOfThree.forEach(index => squares[index].className = "candy");
+    }
+  }
+}
+function checkColumnForThree() {
+  for (let i = 0; i < 47; i++) {
+    let columnOfThree = [i, i + width, i + width * 2];
+    let decidedColor = squares[i].classList[1];
+    const isBlank = squares[i].classList.length < 2;
+    if (columnOfThree.every(index => squares[index].classList.contains(decidedColor) && !isBlank)) {
+      score += 10;
+      columnOfThree.forEach(index => squares[index].className = "candy");
+    }
+  }
+}
+function moveIntoSquareBelow() {
+  for (let i = 0; i < 56; i++) {
+    if (squares[i + width].classList.length < 2) {
+      squares[i + width].classList.add(squares[i].classList[1]);
+      squares[i].className = "candy";
+      const firstRow = [0,1,2,3,4,5,6,7];
+      if (firstRow.includes(i) && squares[i].classList.length < 2) {
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
+        squares[i].classList.add(randomColor);
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

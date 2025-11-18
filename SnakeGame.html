@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐍 Snake Game</title>
+<style>
+  body {
+    background-color: #222;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  h1 {
+    margin-top: 20px;
+  }
+  #gameBoard {
+    width: 300px;
+    height: 300px;
+    border: 2px solid #fff;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    background-color: #111;
+  }
+  .snake {
+    background-color: limegreen;
+    border-radius: 3px;
+  }
+  .food {
+    background-color: red;
+    border-radius: 50%;
+  }
+  #score {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  #restartBtn {
+    background: limegreen;
+    color: #111;
+    border: none;
+    padding: 8px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h1>🐍 Simple Snake Game</h1>
+<div id="score">Score: 0</div>
+<div id="gameBoard"></div>
+<button id="restartBtn" onclick="restartGame()">Restart</button>
+
+<script>
+const board = document.getElementById("gameBoard");
+const scoreDisplay = document.getElementById("score");
+let squares = [];
+let snake = [42, 41]; // starting position
+let direction = 1;
+let width = 20;
+let foodIndex = 0;
+let score = 0;
+let intervalTime = 300;
+let speed = 0.95;
+let timerId;
+
+// Create game board
+for (let i = 0; i < width * width; i++) {
+  const square = document.createElement("div");
+  board.appendChild(square);
+  squares.push(square);
+}
+
+// Start game
+function startGame() {
+  snake.forEach(i => squares[i].classList.add('snake'));
+  generateFood();
+  timerId = setInterval(move, intervalTime);
+}
+startGame();
+
+function move() {
+  if (
+    (snake[0] + width >= width * width && direction === width) || // bottom
+    (snake[0] % width === width - 1 && direction === 1) || // right
+    (snake[0] % width === 0 && direction === -1) || // left
+    (snake[0] - width < 0 && direction === -width) || // top
+    squares[snake[0] + direction].classList.contains('snake')
+  ) {
+    return gameOver();
+  }
+
+  const tail = snake.pop();
+  squares[tail].classList.remove('snake');
+  snake.unshift(snake[0] + direction);
+
+  // Eat food
+  if (squares[snake[0]].classList.contains('food')) {
+    squares[snake[0]].classList.remove('food');
+    squares[tail].classList.add('snake');
+    snake.push(tail);
+    generateFood();
+    score++;
+    scoreDisplay.textContent = "Score: " + score;
+
+    clearInterval(timerId);
+    intervalTime = intervalTime * speed;
+    timerId = setInterval(move, intervalTime);
+  }
+
+  squares[snake[0]].classList.add('snake');
+}
+
+// Controls
+function control(e) {
+  if (e.key === "ArrowRight") direction = 1;
+  else if (e.key === "ArrowUp") direction = -width;
+  else if (e.key === "ArrowLeft") direction = -1;
+  else if (e.key === "ArrowDown") direction = width;
+}
+document.addEventListener('keydown', control);
+
+// Food generator
+function generateFood() {
+  do {
+    foodIndex = Math.floor(Math.random() * squares.length);
+  } while (squares[foodIndex].classList.contains('snake'));
+  squares[foodIndex].classList.add('food');
+}
+
+function gameOver() {
+  clearInterval(timerId);
+  alert("Game Over! Final Score: " + score);
+}
+
+function restartGame() {
+  clearInterval(timerId);
+  snake.forEach(i => squares[i].classList.remove('snake'));
+  squares[foodIndex].classList.remove('food');
+  snake = [42, 41];
+  direction = 1;
+  score = 0;
+  scoreDisplay.textContent = "Score: 0";
+  intervalTime = 300;
+  startGame();
+}
+</script>
+</body>
+</html>

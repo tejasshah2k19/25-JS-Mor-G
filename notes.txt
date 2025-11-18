@@ -511,3 +511,6 @@ we will never run .js file directly
 
 x = "Royal" 
 
+-------------------------------------
+storage 
+    -> 

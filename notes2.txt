@@ -268,4 +268,18 @@ Event ->
 button -> 
                 click 
                 double click 
-                
+---------------------------------------------
+
+storage -> to store the information 
+
+1) local storage 
+2) session storage 
+3) cookie 
+
+
+local storage
+        => stores the information inside browser 
+        => stores the infromation in key:value pair 
+        => setItem getItem clear 
+
+---------------------------------------------

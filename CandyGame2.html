@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candy Match Game 🍬</title>
+<style>
+  body {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+    color: white;
+  }
+  h1 {
+    margin-top: 20px;
+    text-shadow: 2px 2px #000;
+  }
+  #score {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  #board {
+    width: 320px;
+    height: 320px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 3px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 3px;
+    border-radius: 10px;
+  }
+  .candy {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .red { background-color: #e74c3c; }
+  .yellow { background-color: #f1c40f; }
+  .green { background-color: #2ecc71; }
+  .blue { background-color: #3498db; }
+  .purple { background-color: #9b59b6; }
+  .orange { background-color: #e67e22; }
+</style>
+</head>
+<body>
+
+<h1>🍬 Candy Match Game</h1>
+<div id="score">Score: 0</div>
+<div id="board"></div>
+
+<script>
+const board = document.getElementById("board");
+const scoreDisplay = document.getElementById("score");
+const width = 8;
+const colors = ["red", "yellow", "green", "blue", "purple", "orange"];
+let squares = [];
+let score = 0;
+
+// Create the board
+function createBoard() {
+  for (let i = 0; i < width * width; i++) {
+    const square = document.createElement("div");
+    square.setAttribute("draggable", true);
+    square.setAttribute("id", i);
+    let randomColor = colors[Math.floor(Math.random() * colors.length)];
+    square.classList.add("candy", randomColor);
+    board.appendChild(square);
+    squares.push(square);
+  }
+}
+createBoard();
+
+// Drag functionality
+let colorBeingDragged;
+let colorBeingReplaced;
+let squareIdBeingDragged;
+let squareIdBeingReplaced;
+
+squares.forEach(square => square.addEventListener("dragstart", dragStart));
+squares.forEach(square => square.addEventListener("dragend", dragEnd));
+squares.forEach(square => square.addEventListener("dragover", dragOver));
+squares.forEach(square => square.addEventListener("dragenter", dragEnter));
+squares.forEach(square => square.addEventListener("dragleave", dragLeave));
+squares.forEach(square => square.addEventListener("drop", dragDrop));
+
+function dragStart() {
+  colorBeingDragged = this.classList[1];
+  squareIdBeingDragged = parseInt(this.id);
+}
+
+function dragOver(e) {
+  e.preventDefault();
+}
+function dragEnter(e) {
+  e.preventDefault();
+}
+function dragLeave() {}
+function dragDrop() {
+  colorBeingReplaced = this.classList[1];
+  squareIdBeingReplaced = parseInt(this.id);
+  squares[squareIdBeingDragged].classList.replace(colorBeingDragged, colorBeingReplaced);
+  squares[squareIdBeingReplaced].classList.replace(colorBeingReplaced, colorBeingDragged);
+}
+function dragEnd() {
+  let validMoves = [
+    squareIdBeingDragged - 1,
+    squareIdBeingDragged - width,
+    squareIdBeingDragged + 1,
+    squareIdBeingDragged + width
+  ];
+  let validMove = validMoves.includes(squareIdBeingReplaced);
+
+  if (squareIdBeingReplaced && validMove) {
+    squareIdBeingReplaced = null;
+  } else if (squareIdBeingReplaced && !validMove) {
+    squares[squareIdBeingDragged].classList.replace(
+      squares[squareIdBeingDragged].classList[1],
+      colorBeingDragged
+    );
+    squares[squareIdBeingReplaced].classList.replace(
+      squares[squareIdBeingReplaced].classList[1],
+      colorBeingReplaced
+    );
+  } else {
+    squares[squareIdBeingDragged].classList.replace(
+      squares[squareIdBeingDragged].classList[1],
+      colorBeingDragged
+    );
+  }
+}
+
+// Check for matches every 100ms
+window.setInterval(function () {
+  checkRowForThree();
+  checkColumnForThree();
+  moveIntoSquareBelow();
+  scoreDisplay.textContent = "Score: " + score;
+}, 100);
+
+function checkRowForThree() {
+  for (let i = 0; i < 61; i++) {
+    let rowOfThree = [i, i + 1, i + 2];
+    let decidedColor = squares[i].classList[1];
+    const isBlank = squares[i].classList.length < 2;
+    const notValid = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55];
+    if (notValid.includes(i)) continue;
+    if (rowOfThree.every(index => squares[index].classList.contains(decidedColor) && !isBlank)) {
+      score += 10;
+      rowOfThree.forEach(index => squares[index].className = "candy");
+    }
+  }
+}
+
+function checkColumnForThree() {
+  for (let i = 0; i < 47; i++) {
+    let columnOfThree = [i, i + width, i + width * 2];
+    let decidedColor = squares[i].classList[1];
+    const isBlank = squares[i].classList.length < 2;
+    if (columnOfThree.every(index => squares[index].classList.contains(decidedColor) && !isBlank)) {
+      score += 10;
+      columnOfThree.forEach(index => squares[index].className = "candy");
+    }
+  }
+}
+
+function moveIntoSquareBelow() {
+  for (let i = 0; i < 56; i++) {
+    if (squares[i + width].classList.length < 2) {
+      squares[i + width].classList.add(squares[i].classList[1]);
+      squares[i].className = "candy";
+      const firstRow = [0,1,2,3,4,5,6,7];
+      if (firstRow.includes(i) && squares[i].classList.length < 2) {
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
+        squares[i].classList.add(randomColor);
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

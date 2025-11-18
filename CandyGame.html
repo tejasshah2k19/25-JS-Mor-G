@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candy Game</title>
+<style>
+  body {
+    text-align: center;
+    font-family: Arial;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  }
+  #board {
+    width: 250px;
+    height: 250px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin: 50px auto;
+  }
+  .candy {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h2>🍬 Candy Game</h2>
+<p>Click two candies to swap!</p>
+
+<div id="board"></div>
+
+<script>
+const board = document.getElementById("board");
+const colors = ["red", "blue", "green", "yellow", "purple"];
+const gridSize = 5;
+let candies = [];
+let firstCandy = null;
+
+// Initialize board
+for (let i = 0; i < gridSize * gridSize; i++) {
+  const candy = document.createElement("div");
+  candy.classList.add("candy");
+  candy.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+  candy.dataset.index = i;
+  candy.addEventListener("click", selectCandy);
+  board.appendChild(candy);
+  candies.push(candy);
+}
+
+function selectCandy(e) {
+  const candy = e.target;
+  if (!firstCandy) {
+    firstCandy = candy;
+    candy.style.border = "3px solid white";
+  } else {
+    swapCandies(firstCandy, candy);
+    firstCandy.style.border = "none";
+    firstCandy = null;
+  }
+}
+
+function swapCandies(c1, c2) {
+  const color1 = c1.style.backgroundColor;
+  const color2 = c2.style.backgroundColor;
+  c1.style.backgroundColor = color2;
+  c2.style.backgroundColor = color1;
+  checkMatches();
+}
+
+function checkMatches() {
+  for (let i = 0; i < candies.length; i++) {
+    const row = Math.floor(i / gridSize);
+    const col = i % gridSize;
+
+    // Check horizontal match
+    if (col < gridSize - 2) {
+      const c1 = candies[i];
+      const c2 = candies[i + 1];
+      const c3 = candies[i + 2];
+      if (c1.style.backgroundColor === c2.style.backgroundColor &&
+          c1.style.backgroundColor === c3.style.backgroundColor) {
+        c1.style.backgroundColor = "white";
+        c2.style.backgroundColor = "white";
+        c3.style.backgroundColor = "white";
+      }
+    }
+
+    // Check vertical match
+    if (row < gridSize - 2) {
+      const c1 = candies[i];
+      const c2 = candies[i + gridSize];
+      const c3 = candies[i + gridSize * 2];
+      if (c1.style.backgroundColor === c2.style.backgroundColor &&
+          c1.style.backgroundColor === c3.style.backgroundColor) {
+        c1.style.backgroundColor = "white";
+        c2.style.backgroundColor = "white";
+        c3.style.backgroundColor = "white";
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

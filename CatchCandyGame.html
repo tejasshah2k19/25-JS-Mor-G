@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catch the Candy Game</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #87ceeb, #f0f8ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #gameArea {
+      position: relative;
+      width: 400px;
+      height: 500px;
+      background-color: #fff8dc;
+      border: 3px solid #333;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    #basket {
+      position: absolute;
+      bottom: 10px;
+      left: 180px;
+      width: 60px;
+      height: 40px;
+      background-color: #ff6347;
+      border-radius: 10px;
+    }
+
+    .candy {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: #ff69b4;
+      border-radius: 50%;
+    }
+
+    #scoreBoard {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    #gameOver {
+      position: absolute;
+      top: 45%;
+      left: 30%;
+      font-size: 28px;
+      color: red;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="gameArea">
+    <div id="scoreBoard">Score: 0</div>
+    <div id="basket"></div>
+    <div id="gameOver">Game Over!</div>
+  </div>
+
+  <script>
+    const gameArea = document.getElementById('gameArea');
+    const basket = document.getElementById('basket');
+    const scoreBoard = document.getElementById('scoreBoard');
+    const gameOverText = document.getElementById('gameOver');
+
+    let score = 0;
+    let basketX = 180;
+    let gameRunning = true;
+
+    // Move basket with arrow keys
+    document.addEventListener('keydown', (e) => {
+      if (!gameRunning) return;
+      if (e.key === 'ArrowLeft' && basketX > 0) {
+        basketX -= 20;
+      } else if (e.key === 'ArrowRight' && basketX < 340) {
+        basketX += 20;
+      }
+      basket.style.left = basketX + 'px';
+    });
+
+    // Create falling candy
+    function createCandy() {
+      if (!gameRunning) return;
+
+      const candy = document.createElement('div');
+      candy.classList.add('candy');
+      candy.style.left = Math.random() * 370 + 'px';
+      candy.style.top = '0px';
+      gameArea.appendChild(candy);
+
+      let fallInterval = setInterval(() => {
+        let candyTop = parseInt(candy.style.top);
+        candy.style.top = candyTop + 5 + 'px';
+
+        // Collision detection
+        if (candyTop > 440) {
+          let basketLeft = parseInt(basket.style.left);
+          let candyLeft = parseInt(candy.style.left);
+
+          if (candyLeft > basketLeft - 10 && candyLeft < basketLeft + 60) {
+            score++;
+            scoreBoard.textContent = 'Score: ' + score;
+            candy.remove();
+            clearInterval(fallInterval);
+          } else {
+            // Missed the candy
+            gameRunning = false;
+            gameOverText.style.display = 'block';
+            clearInterval(fallInterval);
+          }
+        }
+
+        if (!gameRunning) candy.remove();
+      }, 30);
+
+      // Create next candy
+      if (gameRunning) {
+        setTimeout(createCandy, 1200);
+      }
+    }
+
+    // Start the game
+    createCandy();
+  </script>
+
+</body>
+</html>
