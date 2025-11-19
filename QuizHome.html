@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Welcome , <span id="name"></span></h2>
+
+
+    Question : <span id="question"></span><br> 
+    Option 1 : <span id="option1"></span>
+    <br><BR>
+
+        <button type="button">Logout</button>
+
+    <script>
+
+        let name = localStorage.getItem("name");
+        document.getElementById("name").innerHTML = name;
+
+        //json 
+
+        let que1 = {
+            "question": "________ is used to terminate statement in C Lang? ",
+            "option1": "semicolon",
+            "option2": "comma",
+            "option3": "dot",
+            "option4": "colon",
+            "correctAns": "semicolon"
+        }
+
+        document.getElementById("question").innerHTML  =   que1.question ;   
+        document.getElementById("option1").innerHTML = que1.option1; 
+
+    </script>
+
+</body>
+
+</html>

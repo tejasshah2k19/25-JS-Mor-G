@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Login</h2>
+    Name : <input type="text" id="name"/><br><Br>
+    Mobile : <input type="text" id="mobile" /><br><Br>
+
+    <input type="button" value="Login"  onclick="login()"/>
+</body>
+
+<script>
+
+    function login(){
+
+        let name = document.getElementById("name").value ; 
+        let mobile = document.getElementById("mobile").value; 
+
+        localStorage.setItem("name",name);
+        localStorage.setItem("contactNum",mobile); 
+        
+
+        location.href = "QuizHome.html";//navigate -> redirect -> 
+
+    }
+
+</script>
+
+</html>

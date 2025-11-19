@@ -282,4 +282,20 @@ local storage
         => stores the infromation in key:value pair 
         => setItem getItem clear 
 
+setItem("key","value")  key:value 
+getItem("key")
+clear() 
+removeItem("key") 
+
+---------------------------------------------
+json =>
+                1)collection of key and value - pairs 
+
+                        "question":"2+2 = ? " 
+                        "op1":"4"
+                        "op2":"6"
+                2) we will use { } to denote json 
+                        
+                3) to access single key data we will use dot operator 
+                        json.question 
 ---------------------------------------------
